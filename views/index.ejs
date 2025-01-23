@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Herbal Knowledge Project</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.png">
+  <title>Distherbs-home</title>
   <link rel="stylesheet" href="/styles.css">
   <style>
     /* Global Styles */
@@ -23,12 +24,11 @@
       background-color: #2c3e50;
       color: white;
       text-align: center;
-      padding: 15px 0;
-      z-index: 1;
+      padding: 15px 10px;
     }
 
     header h1 {
-      font-size: 2.5em;
+      font-size: 2em;
       margin: 0;
     }
 
@@ -36,16 +36,17 @@
     nav {
       background-color: #34495e;
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       padding: 10px 0;
-      z-index: 1;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      padding: 10px 20px;
-      margin: 0 15px;
-      font-size: 1.1em;
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 1em;
     }
 
     nav a:hover {
@@ -58,40 +59,38 @@
       background-color: #2ecc71;
       color: white;
       text-align: center;
-      padding: 100px 20px;  /* Increased padding for better visibility */
-      flex-grow: 1; /* Takes up remaining space */
-      height: 50vh; /* Ensures it takes half the viewport height */
+      padding: 60px 20px;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-image: url('https://example.com/your-plant-image.jpg'); /* Optional background image */
+      background-image: url('https://example.com/your-plant-image.jpg');
       background-size: cover;
       background-position: center;
     }
 
     .hero h1 {
-      font-size: 3.5em; /* Increased font size */
+      font-size: 2.5em;
       margin: 0;
-      font-weight: bold;
     }
 
     .hero p {
-      font-size: 1.5em; /* Increased font size for readability */
+      font-size: 1.2em;
       margin-top: 10px;
       font-style: italic;
     }
 
     .hero .plant-icon {
-      font-size: 5em; /* Increased icon size */
-      margin-top: 30px;
+      font-size: 4em;
+      margin-top: 20px;
     }
 
     /* Content Section */
     .container {
-      max-width: 1000px;
+      max-width: 90%;
       margin: 20px auto;
-      padding: 20px;
+      padding: 15px;
       background-color: white;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
@@ -115,18 +114,18 @@
 
     .section-icon {
       font-size: 2em;
-      margin-right: 20px;
+      margin-right: 15px;
       color: #3498db;
     }
 
     .section-content h3 {
-      font-size: 1.5em;
+      font-size: 1.2em;
       color: #34495e;
       margin: 0;
     }
 
     .section-content p {
-      font-size: 1.1em;
+      font-size: 1em;
       color: #555;
     }
 
@@ -150,6 +149,52 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      nav a {
+        font-size: 0.9em;
+        padding: 8px 10px;
+      }
+
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero p {
+        font-size: 1em;
+      }
+
+      .hero .plant-icon {
+        font-size: 3em;
+      }
+
+      .section {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-icon {
+        margin-bottom: 10px;
+        margin-right: 0;
+      }
+
+      .section-content h3 {
+        font-size: 1.1em;
+      }
+
+      .section-content p {
+        font-size: 0.9em;
+      }
+
+      footer p {
+        font-size: 0.9em;
+      }
+    }
   </style>
   <!-- Font Awesome for Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -157,7 +202,7 @@
 <body>
   <!-- Header Section -->
   <header>
-    <h1 style="font-size: 200%;">Design and Development of a Large Language Model for Recognizing the Usage of Traditional Herbs</h1>
+    <h1>Design and Development of a Large Language Model for Recognizing the Usage of Traditional Herbs</h1>
   </header>
 
   <!-- Navbar Section -->
@@ -165,7 +210,7 @@
     <a href="#abstract">Abstract</a>
     <a href="#introduction">Introduction</a>
     <a href="#problem">Problem Statement</a>
-    <a style="border-right:1px solid white" href="#objectives">Objectives</a>
+    <a href="#objectives">Objectives</a>
     <a href="/images">Images</a>
     <a href="/files">Files</a>
   </nav>
@@ -175,7 +220,7 @@
     <h1>Herbal Knowledge Project</h1>
     <p>Preserving and Expanding Traditional Medicinal Wisdom with AI</p>
     <div class="plant-icon">
-      <i class="fas fa-seedling"></i> <!-- Plant Icon -->
+      <i class="fas fa-seedling"></i>
     </div>
   </section>
 
@@ -231,6 +276,5 @@
     <p>&copy; 2025 Herbal Knowledge Project. All rights reserved.</p>
     <p>Contact us at: <a href="mailto:sskumar2k@gmail.com">sskumar2k@gmail.com</a></p>
   </footer>
-
 </body>
 </html>

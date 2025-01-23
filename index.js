@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-
+const favicon = require('serve-favicon');
 // Initialize the app
 const app = express();
 const PORT = 3000;
@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'res_images')));
 app.use('/files', express.static(path.join(__dirname, 'files')));
-
+app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 // Function to get folder structure for files
 // function getFilesStructure(dir) {
 //   let structure = [];
