@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Explorer</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+    }
+
+    /* Navigation Bar Styles */
+    nav {
+      background-color: #506982;
+      padding: 0.5rem 0; /* Reduced padding */
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      margin: 0 2rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #4CAF50;
+    }
+
+    /* Main Container */
+    .container {
+      padding: 3rem 2rem; /* Increased padding for more space */
+      max-width: 1200px;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #4CAF50;
+    }
+
+    /* Grid Layout for Files */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr; /* Stacking vertically */
+      gap: 1rem;
+    }
+
+    /* Styling for details */
+    details {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    details[open] {
+      background-color: #e8f5e9; /* Highlight when open */
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #4CAF50;
+      margin-bottom: 0.5rem;
+    }
+
+    /* File category titles */
+    .category-title {
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 1rem;
+      text-decoration: underline;
+    }
+
+    /* File list styling */
+    .file-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .file {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 1rem;
+      background: #fafafa;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .file:hover {
+      background-color: #f1f1f1;
+    }
+
+    .file-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .file a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .file a:hover {
+      color: #4CAF50;
+      text-decoration: underline;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <h1>Design and Development of a Large Language Model for Recognizing the Usage of Traditional Herbs
+    </h1>
+    </div>
+  </header>
+
+  <!-- Navbar Section -->
+  <nav>
+    <a href="/">Home</a>
+    <a href="/images">Images</a>
+  </nav>
+
+  <!-- Main Content Section -->
+  <div class="container">
+    <h2>Explore Files</h2>
+
+    <!-- PDF Files -->
+    <details id="pdf">
+      <summary>PDF Files 📕</summary>
+      <div class="file-list">
+        <% folderStructure.forEach(folder => { %>
+          <% folder.subfolders.forEach(subfolder => { %>
+            <% if (subfolder.type === 'file' && subfolder.name.endsWith('.pdf')) { %>
+              <div class="file">
+                <div class="file-icon">📕</div>
+                <h3>
+                  <a href="<%= subfolder.path %>" download><%= subfolder.name %></a>
+                </h3>
+              </div>
+            <% } %>
+          <% }) %>
+        <% }) %>
+      </div>
+    </details>
+
+    <!-- JSON Files -->
+    <details id="json">
+      <summary>JSON Files 📄</summary>
+      <div class="file-list">
+        <% folderStructure.forEach(folder => { %>
+          <% folder.subfolders.forEach(subfolder => { %>
+            <% if (subfolder.type === 'file' && subfolder.name.endsWith('.json')) { %>
+              <div class="file">
+                <div class="file-icon">📄</div>
+                <h3>
+                  <a href="<%= subfolder.path %>" download><%= subfolder.name %></a>
+                </h3>
+              </div>
+            <% } %>
+          <% }) %>
+        <% }) %>
+      </div>
+    </details>
+
+    <!-- TXT Files -->
+    <details id="txt">
+      <summary>TXT Files 📜</summary>
+      <div class="file-list">
+        <% folderStructure.forEach(folder => { %>
+          <% folder.subfolders.forEach(subfolder => { %>
+            <% if (subfolder.type === 'file' && subfolder.name.endsWith('.txt')) { %>
+              <div class="file">
+                <div class="file-icon">📜</div>
+                <h3>
+                  <a href="<%= subfolder.path %>" download><%= subfolder.name %></a>
+                </h3>
+              </div>
+            <% } %>
+          <% }) %>
+        <% }) %>
+      </div>
+    </details>
+  </div>
+
+  <!-- Footer Section -->
+  <footer id="foots">
+    <div class="footer-container">
+      <p>&copy; 2025 AUDIST HERBS. All rights reserved.</p>
+      <p>Contact us at: <a href="mailto:sskumar2k@gmail.com">sskumar2k@gmail.com</a></p>
+      <p>Funded By : DST SERB</p>
+    </div>
+  </footer>
+
+</body>
+</html>

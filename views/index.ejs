@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herbal Knowledge Project</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header Section */
+    header {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    /* Navbar Section */
+    nav {
+      background-color: #34495e;
+      display: flex;
+      padding: 10px 0;
+      z-index: 1;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 15px;
+      font-size: 1.1em;
+    }
+
+    nav a:hover {
+      background-color: #2ecc71;
+      border-radius: 5px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #2ecc71;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;  /* Increased padding for better visibility */
+      flex-grow: 1; /* Takes up remaining space */
+      height: 50vh; /* Ensures it takes half the viewport height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://example.com/your-plant-image.jpg'); /* Optional background image */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5em; /* Increased font size */
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.5em; /* Increased font size for readability */
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .hero .plant-icon {
+      font-size: 5em; /* Increased icon size */
+      margin-top: 30px;
+    }
+
+    /* Content Section */
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      color: #34495e;
+    }
+
+    .section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-icon {
+      font-size: 2em;
+      margin-right: 20px;
+      color: #3498db;
+    }
+
+    .section-content h3 {
+      font-size: 1.5em;
+      color: #34495e;
+      margin: 0;
+    }
+
+    .section-content p {
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1 style="font-size: 200%;">Design and Development of a Large Language Model for Recognizing the Usage of Traditional Herbs</h1>
+  </header>
+
+  <!-- Navbar Section -->
+  <nav>
+    <a href="#abstract">Abstract</a>
+    <a href="#introduction">Introduction</a>
+    <a href="#problem">Problem Statement</a>
+    <a style="border-right:1px solid white" href="#objectives">Objectives</a>
+    <a href="/images">Images</a>
+    <a href="/files">Files</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Herbal Knowledge Project</h1>
+    <p>Preserving and Expanding Traditional Medicinal Wisdom with AI</p>
+    <div class="plant-icon">
+      <i class="fas fa-seedling"></i> <!-- Plant Icon -->
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <div class="container">
+    <h2 id="abstract">Abstract</h2>
+    <div class="section">
+      <div class="section-icon">
+        <i class="fas fa-book-open"></i>
+      </div>
+      <div class="section-content">
+        <h3>Abstract</h3>
+        <p>The project aims to develop large language models specializing in herbs and traditional medicine, unifying scattered data from certified sources to create a cohesive knowledge base, while also addressing gaps in current resources.</p>
+      </div>
+    </div>
+
+    <h2 id="introduction">Introduction</h2>
+    <div class="section">
+      <div class="section-icon">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+      <div class="section-content">
+        <h3>Introduction</h3>
+        <p>This project leverages AI technologies to preserve and enhance traditional medicinal knowledge, offering a unified, multilingual, and scalable knowledge base for herbal research and healthcare innovation.</p>
+      </div>
+    </div>
+
+    <h2 id="problem">Problem Statement</h2>
+    <div class="section">
+      <div class="section-icon">
+        <i class="fas fa-exclamation-circle"></i>
+      </div>
+      <div class="section-content">
+        <h3>Problem Statement</h3>
+        <p>Despite efforts by organizations like AYUSH, the knowledge of traditional medicinal herbs remains fragmented and inaccessible. AI technologies have not been effectively applied to integrate and expand this knowledge base.</p>
+      </div>
+    </div>
+
+    <h2 id="objectives">Objectives</h2>
+    <div class="section">
+      <div class="section-icon">
+        <i class="fas fa-bullseye"></i>
+      </div>
+      <div class="section-content">
+        <h3>Objectives</h3>
+        <p>The project seeks to collect, preprocess, and store multimodal data, train large language models, develop image-based question answering systems, and create user-friendly platforms for accessibility and research.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Herbal Knowledge Project. All rights reserved.</p>
+    <p>Contact us at: <a href="mailto:sskumar2k@gmail.com">sskumar2k@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>
