@@ -3,9 +3,10 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const favicon = require('serve-favicon');
+const xlsx = require('xlsx');
 // Initialize the app
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
 // Setting up EJS as the view engine
 app.set('view engine', 'ejs');
@@ -44,6 +45,19 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 
 //   return structure;
 // }
+
+function readExcel(filePath) {
+  const workbook = xlsx.readFile(filePath);
+  const sheetData = {};
+
+  // Loop through all sheets and convert them to JSON
+  workbook.SheetNames.forEach(sheetName => {
+    const sheet = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
+    sheetData[sheetName] = sheet; // Store each sheet's data in an object
+  });
+
+  return sheetData; // Returns an object with sheet names as keys
+}
 
 function getFilesStructure(dir) {
     let structure = [];
@@ -118,7 +132,8 @@ app.get('/', (req, res) => {
 // Route to serve the gallery on the /images path
 app.get('/images', (req, res) => {
   const folderStructure = getFolderStructure(path.join(__dirname, 'res_images'));
-  res.render('images', { folderStructure });
+  const sheetData = readExcel(path.join(__dirname, 'stats.xlsx')); // Get all sheet data
+  res.render('images', { folderStructure, sheetData });
 });
 
 // Route to serve the files on the /files path

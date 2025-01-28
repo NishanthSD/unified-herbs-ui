@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,9 +21,10 @@
       text-align: center;
       padding: 15px 0;
     }
+
     nav {
       background-color: #506982;
-      padding: 0.5rem 0; /* Reduced padding */
+      padding: 0.5rem 0;
     }
 
     nav a {
@@ -47,7 +47,7 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 80vw;
       margin: 20px auto;
       padding: 20px;
       background-color: white;
@@ -68,6 +68,41 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      background-color: #34495e;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      color: white;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.3s;
+    }
+
+    .tab:hover {
+      border-bottom: 2px solid #4CAF50;
+    }
+
+    .tab.active {
+      border-bottom: 2px solid #4CAF50;
+      font-weight: bold;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
     }
 
     .folder {
@@ -175,86 +210,166 @@
         grid-template-columns: 1fr;
       }
     }
+    table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  @media (max-width: 768px) {
+    th, td {
+      padding: 6px;
+    }
+  }
+
+  /* Prevent horizontal scrolling */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Style for the #statistics section */
+  #statistics {
+    margin-top: 20px;
+  }
+
+  #statistics h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  #statistics p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
   </style>
 </head>
 <body>
   <!-- Header Section -->
   <header>
     <div class="header-container">
-      <h1>Design and Development of a Large Language Model for Recognizing the Usage of Traditional Herbs
-    </h1>
+      <h1>Design and Development of a Large Language Model for Recognizing the Usage of Traditional Herbs</h1>
     </div>
   </header>
   <nav>
     <a href="/">Home</a>
     <a href="/files">Files</a>
   </nav>
-  <!-- Main Content Section -->
+
+  <!-- Tabs Section -->
   <div class="container">
-    <h2>For the image source download, contact the mail provided <a href="#foots">here</a></h2>
-    <div class="gallery">
-      <% function renderFolder(folder) { %>
-        <div class="folder">
-          <h2><%= folder.name %></h2>
-          <div class="subfolders">
-            <% folder.subfolders.forEach(subfolder => { %>
-              <details class="subfolder-details">
-                <summary><h3><%= subfolder.name %></h3></summary>
-                
-                <div class="carousel-container">
-                  <!-- Fullplant Images Carousel -->
-                  <div class="carousel">
-                    <h4>Fullplant Images</h4>
-                    <div class="carousel-images" id="carousel-fullplant-<%= subfolder.name %>">
-                      <% subfolder.subfolders.forEach(image => { 
-                        if (/fullplant/i.test(image.name)) { %>
-                          <img src="<%= image.path %>" alt="<%= image.name %>" />
-                      <% } }) %>
-                    </div>
-                    <div class="carousel-controls">
-                      <button onclick="prevSlide('carousel-fullplant-<%= subfolder.name %>')">❮</button>
-                      <button onclick="nextSlide('carousel-fullplant-<%= subfolder.name %>')">❯</button>
-                    </div>
-                  </div>
-
-                  <!-- Flower Images Carousel -->
-                  <div class="carousel">
-                    <h4>Flower Images</h4>
-                    <div class="carousel-images" id="carousel-flower-<%= subfolder.name %>">
-                      <% subfolder.subfolders.forEach(image => { 
-                        if (/flower/i.test(image.name)) { %>
-                          <img src="<%= image.path %>" alt="<%= image.name %>" />
-                      <% } }) %>
-                    </div>
-                    <div class="carousel-controls">
-                      <button onclick="prevSlide('carousel-flower-<%= subfolder.name %>')">❮</button>
-                      <button onclick="nextSlide('carousel-flower-<%= subfolder.name %>')">❯</button>
-                    </div>
-                  </div>
-
-                  <!-- Leaf Images Carousel -->
-                  <div class="carousel">
-                    <h4>Leaf Images</h4>
-                    <div class="carousel-images" id="carousel-leaf-<%= subfolder.name %>">
-                      <% subfolder.subfolders.forEach(image => { 
-                        if (/leaf/i.test(image.name)) { %>
-                          <img src="<%= image.path %>" alt="<%= image.name %>" />
-                      <% } }) %>
-                    </div>
-                    <div class="carousel-controls">
-                      <button onclick="prevSlide('carousel-leaf-<%= subfolder.name %>')">❮</button>
-                      <button onclick="nextSlide('carousel-leaf-<%= subfolder.name %>')">❯</button>
-                    </div>
-                  </div>
-                </div>
-
-              </details>
-            <% }) %>
-          </div>
-        </div>
-      <% } %>
-      <% folderStructure.forEach(folder => { renderFolder(folder); }) %>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('gallery')">Image Gallery</div>
+      <div class="tab" onclick="switchTab('statistics')">Statistics</div>
     </div>
+
+    <!-- Image Gallery Tab Content -->
+    <div id="gallery" class="tab-content active">
+      <h2>For the image source download, contact the mail provided <a href="#foots">here</a></h2>
+      <div class="gallery">
+        <% function renderFolder(folder) { %>
+          <div class="folder">
+            <h2><%= folder.name %></h2>
+            <div class="subfolders">
+              <% folder.subfolders.forEach(subfolder => { %>
+                <details class="subfolder-details">
+                  <summary><h3><%= subfolder.name %></h3></summary>
+                  <div class="carousel-container">
+                    <!-- Fullplant Images Carousel -->
+                    <div class="carousel">
+                      <h4>Fullplant Images</h4>
+                      <div class="carousel-images" id="carousel-fullplant-<%= subfolder.name %>">
+                        <% subfolder.subfolders.forEach(image => { 
+                          if (/fullplant/i.test(image.name)) { %>
+                            <img src="<%= image.path %>" alt="<%= image.name %>" />
+                        <% } }) %>
+                      </div>
+                      <div class="carousel-controls">
+                        <button onclick="prevSlide('carousel-fullplant-<%= subfolder.name %>')">❮</button>
+                        <button onclick="nextSlide('carousel-fullplant-<%= subfolder.name %>')">❯</button>
+                      </div>
+                    </div>
+
+                    <!-- Flower Images Carousel -->
+                    <div class="carousel">
+                      <h4>Flower Images</h4>
+                      <div class="carousel-images" id="carousel-flower-<%= subfolder.name %>">
+                        <% subfolder.subfolders.forEach(image => { 
+                          if (/flower/i.test(image.name)) { %>
+                            <img src="<%= image.path %>" alt="<%= image.name %>" />
+                        <% } }) %>
+                      </div>
+                      <div class="carousel-controls">
+                        <button onclick="prevSlide('carousel-flower-<%= subfolder.name %>')">❮</button>
+                        <button onclick="nextSlide('carousel-flower-<%= subfolder.name %>')">❯</button>
+                      </div>
+                    </div>
+
+                    <!-- Leaf Images Carousel -->
+                    <div class="carousel">
+                      <h4>Leaf Images</h4>
+                      <div class="carousel-images" id="carousel-leaf-<%= subfolder.name %>">
+                        <% subfolder.subfolders.forEach(image => { 
+                          if (/leaf/i.test(image.name)) { %>
+                            <img src="<%= image.path %>" alt="<%= image.name %>" />
+                        <% } }) %>
+                      </div>
+                      <div class="carousel-controls">
+                        <button onclick="prevSlide('carousel-leaf-<%= subfolder.name %>')">❮</button>
+                        <button onclick="nextSlide('carousel-leaf-<%= subfolder.name %>')">❯</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </details>
+              <% }) %>
+            </div>
+          </div>
+        <% } %>
+        <% folderStructure.forEach(folder => { renderFolder(folder); }) %>
+      </div>
+    </div>
+
+    <!-- Statistics Tab Content -->
+    <div id="statistics" class="tab-content">
+      <h2>Statistics</h2>
+      <p>The collected statistics are listed here</p>
+    
+      <!-- Display data from the Excel sheets -->
+      <div class="tables">
+        <% Object.keys(sheetData).forEach((sheetName, index) => { %> <!-- Loop over sheet names -->
+          <details>
+            <summary><h3><%= sheetName %></h3></summary> <!-- Display sheet name in summary -->
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <% Object.keys(sheetData[sheetName][0]).forEach(column => { %> <!-- Loop over columns -->
+                      <th><%= column %></th>
+                    <% }) %>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% sheetData[sheetName].forEach(row => { %> <!-- Loop over rows -->
+                    <tr>
+                      <% Object.values(row).forEach(cell => { %> <!-- Loop over cell values -->
+                        <td><%= cell %></td>
+                      <% }) %>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        <% }) %> <!-- End of loop -->
+      </div>
+    </div>
+    
   </div>
 
   <!-- Footer Section -->
@@ -266,8 +381,19 @@
     </div>
   </footer>
 
-  <!-- Carousel Script -->
+  <!-- Carousel and Tabs Script -->
   <script>
+    function switchTab(tabId) {
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => tab.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
     function nextSlide(carouselId) {
       const carousel = document.getElementById(carouselId);
       const images = carousel.querySelectorAll('img');
